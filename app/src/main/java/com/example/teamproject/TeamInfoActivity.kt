@@ -16,11 +16,33 @@ class TeamInfoActivity : AppCompatActivity() {
         binding = ActivityTeamInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // MainActivity → team_name 전달
-        val teamName = intent.getStringExtra("team_name") ?: "Unknown Team"
+        // ① 전달받은 팀 ID
+        val teamId = intent.getIntExtra("team_id", -1)
+        if (teamId == -1) finish()
 
-        // 툴바 제목 및 본문 텍스트에 팀 이름 표시
-        binding.toolbarInfo.title = teamName
-        binding.tvTeamName.text  = teamName
+        // ② JSON에서 팀 찾아오기
+        val team = getTeamList(this).first { it.id == teamId }
+
+        // ③ 툴바 제목 설정
+        binding.toolbarInfo.title = team.name
+        setSupportActionBar(binding.toolbarInfo)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        // ④ 헤더(순위·승점) 표시
+        binding.tvHeader.text = "순위 ${team.rank}  |  승점 ${team.points}"
+
+        // ⑤ 선수 목록을 하나의 문자열로 구성
+        val playersText = buildString {
+            team.players.forEachIndexed { idx, p ->
+                append("${idx + 1}. ${p.name} (${p.position})  #${p.number}\n")
+            }
+        }
+        binding.tvPlayers.text = playersText.trimEnd()
+    }
+
+    // 뒤로가기 화살표 지원
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- 상단 툴바 -->
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbarInfo"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:titleTextColor="@android:color/white"
-        app:titleCentered="true"/>
+        android:layout_height="wrap_content">
 
-    <!-- 팀 이름만 표시 -->
-    <TextView
-        android:id="@+id/tvTeamName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="32dp"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:gravity="center"/>
-</LinearLayout>
+        <!-- AppCompat Toolbar -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarInfo"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:titleTextColor="@android:color/white"/>
+
+        <!-- 팀 헤더 -->
+        <TextView
+            android:id="@+id/tvHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <!-- 선수 목록 한 덩어리 -->
+        <TextView
+            android:id="@+id/tvPlayers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textSize="16sp"/>
+    </LinearLayout>
+</ScrollView>

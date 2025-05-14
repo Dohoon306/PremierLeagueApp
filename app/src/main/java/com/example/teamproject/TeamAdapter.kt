@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
 
 class TeamAdapter(
     private val teams: List<Team>
@@ -42,10 +41,9 @@ class TeamAdapter(
 
         // 클릭하면 상세 화면으로 이동 etc.
         holder.itemView.setOnClickListener {
-            val ctx = it.context
-            val intent = Intent(ctx, TeamInfoActivity::class.java)
-            intent.putExtra("team_name", team.name)   // 이름만 전달
-            ctx.startActivity(intent)
+            val intent = Intent(it.context, TeamInfoActivity::class.java)
+            intent.putExtra("team_id", team.id)   // 반드시 team.id
+            it.context.startActivity(intent)
         }
     }
 
