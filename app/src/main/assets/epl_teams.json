@@ -1,0 +1,282 @@
+[
+  {
+    "id": 1,
+    "name": "Liverpool",
+    "rank": 1,
+    "logo": "liverpool",
+    "points": 83,
+    "players": [
+      { "name": "Mohamed Salah", "position": "RW", "number": 11 },
+      { "name": "Virgil van Dijk", "position": "CB", "number": 4 },
+      { "name": "Alisson Becker", "position": "GK", "number": 1 },
+      { "name": "Trent Alexander-Arnold", "position": "RB", "number": 66 },
+      { "name": "Luis Díaz", "position": "LW", "number": 7 }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Arsenal",
+    "rank": 2,
+    "logo": "arsenal",
+    "points": 68,
+    "players": [
+      { "name": "Bukayo Saka", "position": "RW", "number": 7 },
+      { "name": "Martin Ødegaard", "position": "CAM", "number": 8 },
+      { "name": "Declan Rice", "position": "DM", "number": 41 },
+      { "name": "Gabriel Martinelli", "position": "LW", "number": 11 },
+      { "name": "William Saliba", "position": "CB", "number": 12 }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Newcastle United",
+    "rank": 3,
+    "logo": "newcastle_united",
+    "points": 66,
+    "players": [
+      { "name": "Alexander Isak", "position": "ST", "number": 14 },
+      { "name": "Bruno Guimarães", "position": "CM", "number": 39 },
+      { "name": "Kieran Trippier", "position": "RB", "number": 2 },
+      { "name": "Sven Botman", "position": "CB", "number": 4 },
+      { "name": "Nick Pope", "position": "GK", "number": 22 }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Manchester City",
+    "rank": 4,
+    "logo": "manchester_city",
+    "points": 65,
+    "players": [
+      { "name": "Erling Haaland", "position": "ST", "number": 9 },
+      { "name": "Kevin De Bruyne", "position": "CM", "number": 17 },
+      { "name": "Rodri", "position": "DM", "number": 16 },
+      { "name": "Rúben Dias", "position": "CB", "number": 3 },
+      { "name": "Ederson", "position": "GK", "number": 31 }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Chelsea",
+    "rank": 5,
+    "logo": "chelsea",
+    "points": 63,
+    "players": [
+      { "name": "Cole Palmer", "position": "AM", "number": 20 },
+      { "name": "Enzo Fernández", "position": "CM", "number": 5 },
+      { "name": "Reece James", "position": "RB", "number": 24 },
+      { "name": "Moises Caicedo", "position": "CM", "number": 25 },
+      { "name": "Nicolas Jackson", "position": "ST", "number": 15 }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Aston Villa",
+    "rank": 6,
+    "logo": "aston_villa",
+    "points": 63,
+    "players": [
+      { "name": "Ollie Watkins", "position": "ST", "number": 11 },
+      { "name": "Youri Tielemans", "position": "CM", "number": 8 },
+      { "name": "Morgan Rogers", "position": "CAM", "number": 27 },
+      { "name": "Marcus Rashford", "position": "LW", "number": 9 },
+      { "name": "Emiliano Martinez", "position": "GK", "number": 23 }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Nottingham Forest",
+    "rank": 7,
+    "logo": "nottingham_forest",
+    "points": 62,
+    "players": [
+      { "name": "Chris Wood", "position": "ST", "number": 20 },
+      { "name": "Morgan Gibbs-White", "position": "CAM", "number": 10 },
+      { "name": "Callum Hudson-Odoi", "position": "LW", "number": 24 },
+      { "name": "Murillo", "position": "CB", "number": 5 },
+      { "name": "Matz Sels", "position": "GK", "number": 1 }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Brentford",
+    "rank": 8,
+    "logo": "brentford",
+    "points": 55,
+    "players": [
+      { "name": "Yoane Wissa", "position": "ST", "number": 11 },
+      { "name": "Bryan Mbeumo", "position": "RW", "number": 19 },
+      { "name": "Christian Nørgaard", "position": "CDM", "number": 6 },
+      { "name": "Rico Henry", "position": "LB", "number": 3 },
+      { "name": "Mikkel Damsgaard", "position": "AM", "number": 24 }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Brighton & Hove Albion",
+    "rank": 9,
+    "logo": "brighton",
+    "points": 55,
+    "players": [
+      { "name": "Kaoru Mitoma", "position": "LW", "number": 22 },
+      { "name": "Joao Pedro", "position": "ST", "number": 9 },
+      { "name": "Lewis Dunk", "position": "CB", "number": 5 },
+      { "name": "Pervis Estupiñán", "position": "LB", "number": 30 },
+      { "name": "Carlos Baleba", "position": "DM", "number": 20 }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "AFC Bournemouth",
+    "rank": 10,
+    "logo": "bournemouth",
+    "points": 53,
+    "players": [
+      { "name": "Antonie Semenyo", "position": "LW", "number": 24 },
+      { "name": "Dean Huijsen", "position": "CB", "number": 2 },
+      { "name": "Ryan Christie", "position": "AM", "number": 10 },
+      { "name": "Milos Kerkez", "position": "LB", "number": 3 },
+      { "name": "Justin Kluivert", "position": "AM", "number": 19 }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Fulham",
+    "rank": 11,
+    "logo": "fulham",
+    "points": 51,
+    "players": [
+      { "name": "Raúl Jiménez", "position": "ST", "number": 9 },
+      { "name": "Alex Iwabi", "position": "LW", "number": 20 },
+      { "name": "Kenny Tete", "position": "RB", "number": 2 },
+      { "name": "Antonee Robinson", "position": "LB", "number": 33 },
+      { "name": "Bernd Leno", "position": "GK", "number": 17 }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Crystal Palace",
+    "rank": 12,
+    "logo": "crystal_palace",
+    "points": 49,
+    "players": [
+      { "name": "Eberechi Eze", "position": "CAM", "number": 10 },
+      { "name": "Daniel Munoz", "position": "RB", "number": 12 },
+      { "name": "Marc Guéhi", "position": "CB", "number": 6 },
+      { "name": "Tyrick Mitchell", "position": "LB", "number": 3 },
+      { "name": "Dean Henderson", "position": "GK", "number": 1 }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Everton",
+    "rank": 13,
+    "logo": "everton",
+    "points": 42,
+    "players": [
+      { "name": "Dominic Calvert-Lewin", "position": "ST", "number": 9 },
+      { "name": "lliman Ndiaye", "position": "LW", "number": 10 },
+      { "name": "Abdoulaye Doucouré", "position": "CM", "number": 16 },
+      { "name": "James Tarkowski", "position": "CB", "number": 5 },
+      { "name": "Jordan Pickford", "position": "GK", "number": 1 }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Wolverhampton Wanderers",
+    "rank": 14,
+    "logo": "wolverhampton",
+    "points": 41,
+    "players": [
+      { "name": "Matheus Cunha", "position": "ST", "number": 12 },
+      { "name": "Rayan Ait Nouri", "position": "LB", "number": 3 },
+      { "name": "Hwang Hee Chan", "position": "ST", "number": 11 },
+      { "name": "Andre", "position": "CM", "number": 7 },
+      { "name": "José Sá", "position": "GK", "number": 1 }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "West Ham United",
+    "rank": 15,
+    "logo": "west_ham_united",
+    "points": 40,
+    "players": [
+      { "name": "Jarrod Bowen", "position": "RW", "number": 20 },
+      { "name": "Lucas Paquetá", "position": "CAM", "number": 10 },
+      { "name": "Tomáš Souček", "position": "CM", "number": 28 },
+      { "name": "Aaron Wan-Bissaka", "position": "RB", "number": 29 },
+      { "name": "Alphonse Areola", "position": "GK", "number": 23 }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Manchester United",
+    "rank": 16,
+    "logo": "manchester_united",
+    "points": 39,
+    "players": [
+      { "name": "Bruno Fernandes", "position": "CAM", "number": 8 },
+      { "name": "Kobbie Mainoo", "position": "DM", "number": 20 },
+      { "name": "Casemiro", "position": "DM", "number": 18 },
+      { "name": "Rasmus Hojlund", "position": "ST", "number": 9 },
+      { "name": "André Onana", "position": "GK", "number": 24 }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Tottenham Hotspur",
+    "rank": 17,
+    "logo": "tottenham_hotspur",
+    "points": 38,
+    "players": [
+      { "name": "Son Heung-min", "position": "LW", "number": 7 },
+      { "name": "James Maddison", "position": "CAM", "number": 10 },
+      { "name": "Cristian Romero", "position": "CB", "number": 17 },
+      { "name": "Destiny Udogie", "position": "LB", "number": 38 },
+      { "name": "Guglielmo Vicario", "position": "GK", "number": 1 }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Ipswich Town",
+    "rank": 18,
+    "logo": "ipswich_town",
+    "points": 22,
+    "players": [
+      { "name": "Kalvin Phillips", "position": "DM", "number": 8 },
+      { "name": "Julio Enciso", "position": "CAM", "number": 9 },
+      { "name": "Leif Davis", "position": "LB", "number": 3 },
+      { "name": "Sam Morsy", "position": "CM", "number": 5 },
+      { "name": "Liam Delap", "position": "ST", "number": 19 }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Leicester City",
+    "rank": 19,
+    "logo": "leicester_city",
+    "points": 22,
+    "players": [
+      { "name": "Jamie Vardy", "position": "ST", "number": 9 },
+      { "name": "Wilfred Ndidi", "position": "DM", "number": 6 },
+      { "name": "James Justin", "position": "RB", "number": 2 },
+      { "name": "Bilal El Khannouss", "position": "AM", "number": 11 },
+      { "name": "Mads Hermansen", "position": "GK", "number": 1 }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Southampton",
+    "rank": 20,
+    "logo": "southampton",
+    "points": 12,
+    "players": [
+      { "name": "Tyler Dibling", "position": "RW", "number": 33 },
+      { "name": "Mateus Fernandes", "position": "CAM", "number": 18 },
+      { "name": "Kyle Walker-Peters", "position": "RB", "number": 2 },
+      { "name": "Jan Bednarek", "position": "CB", "number": 35 },
+      { "name": "Aaron Ramsdale", "position": "GK", "number": 30 }
+    ]
+  }
+]
