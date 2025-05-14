@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="56dp"
-    android:orientation="horizontal"
     android:gravity="center_vertical"
     android:paddingStart="12dp"
     android:paddingEnd="12dp">
 
+    <!-- 팀 순위 -->
     <TextView
         android:id="@+id/tvRank"
         android:layout_width="32dp"
@@ -14,34 +15,33 @@
         android:text="1"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:gravity="center"
-        android:textColor="@android:color/black" />
+        android:gravity="center"/>
 
+    <!-- 팀 로고 -->
     <ImageView
         android:id="@+id/imgLogo"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginStart="8dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_launcher_foreground" />
+        android:scaleType="fitCenter"/>
 
+    <!-- 팀 이름 -->
     <TextView
         android:id="@+id/tvTeamName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:layout_marginStart="8dp"
-        android:text="Team Name"
-        android:textSize="16sp"
-        android:textColor="@android:color/black" />
+        android:text="Team"
+        android:textSize="16sp"/>
 
+    <!-- 승점 -->
     <TextView
         android:id="@+id/tvPoints"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:text="83"
+        android:text="0"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:gravity="end"
-        android:textColor="@android:color/black" />
+        android:gravity="end"/>
 </LinearLayout>

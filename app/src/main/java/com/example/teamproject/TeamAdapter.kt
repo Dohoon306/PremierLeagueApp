@@ -1,6 +1,6 @@
 package com.example.teamproject
 
-import TeamDetailActivity
+
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -43,8 +43,8 @@ class TeamAdapter(
         // 클릭하면 상세 화면으로 이동 etc.
         holder.itemView.setOnClickListener {
             val ctx = it.context
-            val intent = Intent(ctx, TeamDetailActivity::class.java)
-            intent.putExtra("team", Gson().toJson(team))   // 직렬화 전달
+            val intent = Intent(ctx, TeamInfoActivity::class.java)
+            intent.putExtra("team_name", team.name)   // 이름만 전달
             ctx.startActivity(intent)
         }
     }
