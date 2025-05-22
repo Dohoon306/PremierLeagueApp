@@ -13,9 +13,12 @@
         android:theme="@style/Theme.TeamProject"
         tools:targetApi="31">
         <activity
-            android:name=".TeamInfoActivity"
-            android:parentActivityName=".MainActivity"
+            android:name=".SearchPlayerActivity"
             android:exported="false" />
+        <activity
+            android:name=".TeamInfoActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
