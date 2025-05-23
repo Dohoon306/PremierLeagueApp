@@ -31,12 +31,13 @@ class PlayerInfoActivity : AppCompatActivity() {
 
         supportActionBar?.title = name
 
-        binding.tvPlayerInfo.text = """
-            이름: $name
-            포지션: $pos
-            등번호: #$num
-            소속팀: $team
-        """.trimIndent()
+        binding.toolbarPlayer.title = intent.getStringExtra("name") ?: "선수 정보"
+        binding.tvPosition.text = "포지션: ${intent.getStringExtra("position") ?: "?"}"
+        binding.tvNumber.text = "등번호: ${intent.getIntExtra("number", -1)}"
+        binding.tvTeam.text = "소속팀: ${intent.getStringExtra("team") ?: "?"}"
+
+
+
     }
 
     // 🟦 뒤로가기 버튼 동작

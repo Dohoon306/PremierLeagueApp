@@ -33,13 +33,13 @@ class MainActivity : AppCompatActivity() {
 
         // 툴바 설정
         setSupportActionBar(binding.toolbarMain)
-        supportActionBar?.title = ""
+        supportActionBar?.title = "Premier League 24/25"
         // 순위표 View 생성 및 세팅
         rankingView = layoutInflater.inflate(R.layout.view_ranking, binding.contentFrame, false)
         setupRankingRecycler(rankingView)
 
         // 탭 3개 추가
-        val tabTitles = arrayOf("순위", "선수 검색", "팀 팔로잉")
+        val tabTitles = arrayOf("순위", "선수 검색", "팔로잉")
         tabTitles.forEach { title ->
             binding.tabLayout.addTab(binding.tabLayout.newTab().setText(title))
         }

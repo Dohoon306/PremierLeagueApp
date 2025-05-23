@@ -30,7 +30,7 @@ class SearchPlayerAdapter(
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val (teamName, _, player) = players[position]
-        holder.tvName.text = "${player.name} (${player.position})  #${player.number}"
+        holder.tvName.text = player.name
         holder.tvTeam.text = teamName
     }
 

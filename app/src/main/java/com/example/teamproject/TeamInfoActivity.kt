@@ -1,6 +1,8 @@
 package com.example.teamproject
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -29,15 +31,31 @@ class TeamInfoActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // ④ 헤더(순위·승점) 표시
-        binding.tvHeader.text = "순위 ${team.rank}  |  승점 ${team.points}"
+        binding.tvRank.text = "순위: ${team.rank}"
+        binding.tvPoints.text = "승점: ${team.points}"
 
-        // ⑤ 선수 목록을 하나의 문자열로 구성
-        val playersText = buildString {
-            team.players.forEachIndexed { idx, p ->
-                append("${idx + 1}. ${p.name} (${p.position})  #${p.number}\n")
+
+        val container = binding.llPlayers  // LinearLayout in activity_team_info.xml
+
+        team.players.forEach { player ->
+            val tv = TextView(this).apply {
+                text = player.name
+                textSize = 16f
+                setPadding(10, 10, 10, 10)
+                setOnClickListener {
+                    // 선수 정보 화면으로 이동
+                    val intent = Intent(this@TeamInfoActivity, PlayerInfoActivity::class.java)
+                    intent.putExtra("name", player.name)
+                    intent.putExtra("position", player.position)
+                    intent.putExtra("number", player.number)
+                    intent.putExtra("team", team.name)
+                    intent.putExtra("logo", team.logo)
+                    startActivity(intent)
+                }
             }
+            container.addView(tv)
         }
-        binding.tvPlayers.text = playersText.trimEnd()
+
     }
 
     // 뒤로가기 화살표 지원
