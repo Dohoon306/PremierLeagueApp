@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -17,6 +19,7 @@ import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var searchView: View
 
     // 순위표 View 재사용을 위해 미리 생성
     private lateinit var rankingView: View
@@ -36,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         setupRankingRecycler(rankingView)
 
         // 탭 3개 추가
-        val tabTitles = arrayOf("순위", "탭2", "탭3")
+        val tabTitles = arrayOf("순위", "선수 검색", "팀 팔로잉")
         tabTitles.forEach { title ->
             binding.tabLayout.addTab(binding.tabLayout.newTab().setText(title))
         }
@@ -54,36 +57,49 @@ class MainActivity : AppCompatActivity() {
             override fun onTabUnselected(tab: TabLayout.Tab) {}
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
+
+        //2번째 탭 생성코드
+
+        searchView = layoutInflater.inflate(R.layout.view_search_player, binding.contentFrame, false)
+
+        val editSearch = searchView.findViewById<EditText>(R.id.editSearch)
+        val rvResult = searchView.findViewById<RecyclerView>(R.id.rvSearchResult)
+
+        editSearch.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                val keyword = editSearch.text.toString().trim()
+                val teams = getTeamList(this)
+                val matched = mutableListOf<Triple<String, String, Player>>() // teamName, logo, player
+
+                teams.forEach { team ->
+                    team.players.filter { it.name.contains(keyword, ignoreCase = true) }
+                        .forEach { player ->
+                            matched.add(Triple(team.name, team.logo, player))
+                        }
+                }
+
+                rvResult.layoutManager = LinearLayoutManager(this)
+                rvResult.adapter = SearchPlayerAdapter(matched) { (teamName, logo, player) ->
+                    val intent = Intent(this, PlayerInfoActivity::class.java)
+                    intent.putExtra("name", player.name)
+                    intent.putExtra("position", player.position)
+                    intent.putExtra("number", player.number)
+                    intent.putExtra("team", teamName)
+                    intent.putExtra("logo", logo)
+                    startActivity(intent)
+                }
+
+                true
+            } else false
+        }
+
     }
 
     private fun showTab(position: Int) {
         binding.contentFrame.removeAllViews()
-
         when (position) {
-            0 -> {
-                // 순위표 뷰 추가
-                binding.contentFrame.addView(rankingView)
-            }
-
-            1 -> {
-                // SearchPlayerActivity로 이동 (별도 액티비티 실행)
-                val intent = Intent(this, SearchPlayerActivity::class.java)
-                startActivity(intent)
-
-                // 현재 탭을 다시 0번(순위)으로 되돌림
-                binding.tabLayout.selectTab(binding.tabLayout.getTabAt(0))
-                // 또는 빈 뷰라도 추가해줘야 빈 FrameLayout이 보임
-                val blankView = TextView(this).apply {
-                    text = "검색 화면이 실행되었습니다."
-                    gravity = Gravity.CENTER
-                    layoutParams = FrameLayout.LayoutParams(
-                        FrameLayout.LayoutParams.MATCH_PARENT,
-                        FrameLayout.LayoutParams.MATCH_PARENT
-                    )
-                }
-                binding.contentFrame.addView(blankView)
-            }
-
+            0 -> binding.contentFrame.addView(rankingView)
+            1 -> binding.contentFrame.addView(searchView)
             2 -> {
                 val textView = TextView(this).apply {
                     text = "콘텐츠 준비 중"
@@ -98,6 +114,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
 
 
     private fun setupRankingRecycler(root: View) {

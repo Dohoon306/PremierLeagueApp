@@ -10,9 +10,11 @@
         android:id="@+id/toolbarMain"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="#B7B7F9"
+        android:logo="@drawable/premierleague_logo"
         android:title="Premier League 24/25"
-        android:titleTextColor="@android:color/white"/>
+        android:titleTextColor="@android:color/white" />
+
 
     <!-- Tab 버튼 3개 -->
     <com.google.android.material.tabs.TabLayout
