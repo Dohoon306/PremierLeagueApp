@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         // ViewBinding 초기화
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        //
         // 툴바 설정
         setSupportActionBar(binding.toolbarMain)
         supportActionBar?.title = "Premier League 24/25"
