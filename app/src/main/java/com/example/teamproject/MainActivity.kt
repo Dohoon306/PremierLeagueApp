@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         // 툴바 설정
         setSupportActionBar(binding.toolbarMain)
-
+        supportActionBar?.title = ""
         // 순위표 View 생성 및 세팅
         rankingView = layoutInflater.inflate(R.layout.view_ranking, binding.contentFrame, false)
         setupRankingRecycler(rankingView)

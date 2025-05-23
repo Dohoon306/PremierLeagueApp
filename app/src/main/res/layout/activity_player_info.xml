@@ -9,7 +9,7 @@
         android:id="@+id/toolbarPlayer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/toolbar"
         android:titleTextColor="@android:color/white" />
 
     <ImageView

@@ -11,9 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#B7B7F9"
-        android:logo="@drawable/premierleague_logo"
         android:title="Premier League 24/25"
         android:titleTextColor="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/imgLeagueLogo"
+        android:layout_width="274dp"
+        android:layout_height="161dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="4dp"
+        android:contentDescription="Premier League 로고"
+        android:src="@drawable/premierleague_logo" />
 
 
     <!-- Tab 버튼 3개 -->
