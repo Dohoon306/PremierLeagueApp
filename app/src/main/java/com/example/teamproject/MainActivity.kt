@@ -100,26 +100,20 @@ class MainActivity : AppCompatActivity() {
         when (position) {
             0 -> binding.contentFrame.addView(rankingView)
             1 -> binding.contentFrame.addView(searchView)
-            2 -> {
-                val textView = TextView(this).apply {
-                    text = "콘텐츠 준비 중"
-                    textSize = 18f
-                    gravity = Gravity.CENTER
-                    layoutParams = FrameLayout.LayoutParams(
-                        FrameLayout.LayoutParams.MATCH_PARENT,
-                        FrameLayout.LayoutParams.MATCH_PARENT
-                    )
-                }
-                binding.contentFrame.addView(textView)
+            2 -> binding.contentFrame.addView(FollowedTeamView(this))
             }
         }
     }
 
 
 
-    private fun setupRankingRecycler(root: View) {
-        val recyclerView = root.findViewById<RecyclerView>(R.id.recyclerViewRank)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = TeamAdapter(getTeamList(this))
+private fun setupRankingRecycler(root: View) {
+    val recyclerView = root.findViewById<RecyclerView>(R.id.recyclerViewRank)
+    recyclerView.layoutManager = LinearLayoutManager(root.context)
+    recyclerView.adapter = TeamAdapter(getTeamList(root.context)) { team ->
+        val intent = Intent(root.context, TeamInfoActivity::class.java)
+        intent.putExtra("team_id", team.id)
+        root.context.startActivity(intent)
     }
 }
+

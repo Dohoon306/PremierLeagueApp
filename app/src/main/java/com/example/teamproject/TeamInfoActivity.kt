@@ -33,7 +33,11 @@ class TeamInfoActivity : AppCompatActivity() {
         // ④ 헤더(순위·승점) 표시
         binding.tvRank.text = "순위: ${team.rank}"
         binding.tvPoints.text = "승점: ${team.points}"
-
+        
+        //로고 표현
+        val resId = resources.getIdentifier(team.logo, "drawable", packageName)
+        binding.imgTeamLogo.setImageResource(resId)
+        
 
         val container = binding.llPlayers  // LinearLayout in activity_team_info.xml
 
@@ -55,6 +59,18 @@ class TeamInfoActivity : AppCompatActivity() {
             }
             container.addView(tv)
         }
+        //별 팔로잉 로직(별 클릭 처리 및 상태 저장)
+        val prefs = getSharedPreferences("followed_teams", MODE_PRIVATE)
+        val isFollowing = prefs.getBoolean("team_${team.id}", false)
+
+        updateStarIcon(isFollowing)
+
+        binding.btnFavorite.setOnClickListener {
+            val newState = !prefs.getBoolean("team_${team.id}", false)
+            prefs.edit().putBoolean("team_${team.id}", newState).apply()
+            updateStarIcon(newState)
+        }
+
 
     }
 
@@ -63,4 +79,10 @@ class TeamInfoActivity : AppCompatActivity() {
         finish()
         return true
     }
+    //별 상태 변경 로직
+    private fun updateStarIcon(isFollowing: Boolean) {
+        val icon = if (isFollowing) R.drawable.star else R.drawable.star_empty
+        binding.btnFavorite.setImageResource(icon)
+    }
+
 }

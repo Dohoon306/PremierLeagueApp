@@ -18,6 +18,16 @@
             android:background="@color/toolbar"
             android:titleTextColor="@android:color/white" />
 
+        <ImageButton
+            android:id="@+id/btnFavorite"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            android:src="@drawable/star_empty"
+            android:contentDescription="팔로우 버튼" />
+
         <!-- 순위 박스 -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -73,6 +83,15 @@
                 android:layout_height="wrap_content"
                 android:padding="16dp" />
         </com.google.android.material.card.MaterialCardView>
+
+        <ImageView
+            android:id="@+id/imgTeamLogo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:contentDescription="팀 로고"
+            android:scaleType="centerInside" />
 
     </LinearLayout>
 </ScrollView>

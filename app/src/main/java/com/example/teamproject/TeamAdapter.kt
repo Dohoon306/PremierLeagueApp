@@ -10,7 +10,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class TeamAdapter(
-    private val teams: List<Team>
+    private val teams: List<Team>,
+    private val onItemClick: (Team) -> Unit
 ) : RecyclerView.Adapter<TeamAdapter.TeamVH>() {
 
     inner class TeamVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -33,17 +34,13 @@ class TeamAdapter(
         holder.tvName.text = team.name
         holder.tvPts.text = team.points.toString()
 
-        // 로고 파일명과 drawable 리소스 연결
         val resId = holder.itemView.context.resources.getIdentifier(
             team.logo, "drawable", holder.itemView.context.packageName
         )
         holder.imgLogo.setImageResource(resId)
 
-        // 클릭하면 상세 화면으로 이동 etc.
         holder.itemView.setOnClickListener {
-            val intent = Intent(it.context, TeamInfoActivity::class.java)
-            intent.putExtra("team_id", team.id)   // 반드시 team.id
-            it.context.startActivity(intent)
+            onItemClick(team)
         }
     }
 
