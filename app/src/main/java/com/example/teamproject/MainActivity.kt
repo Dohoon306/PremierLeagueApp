@@ -3,13 +3,16 @@ package com.example.teamproject
 import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
+import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +23,7 @@ import com.google.android.material.tabs.TabLayout
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var searchView: View
+    private lateinit var toggle: ActionBarDrawerToggle
 
     // 순위표 View 재사용을 위해 미리 생성
     private lateinit var rankingView: View
@@ -27,12 +31,40 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         // ViewBinding 초기화
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //
+
         // 툴바 설정
         setSupportActionBar(binding.toolbarMain)
+
+        toggle = ActionBarDrawerToggle(
+            this,
+            binding.drawerLayout,
+            binding.toolbarMain,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
+
+        binding.drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+
+
+        binding.navigationView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.menu_login -> {
+                    startActivity(Intent(this, LoginActivity::class.java))
+                }
+                R.id.menu_settings -> {
+
+                }
+            }
+            binding.drawerLayout.closeDrawers()
+            true
+        }
+
         supportActionBar?.title = "Premier League 24/25"
         // 순위표 View 생성 및 세팅
         rankingView = layoutInflater.inflate(R.layout.view_ranking, binding.contentFrame, false)
@@ -93,6 +125,21 @@ class MainActivity : AppCompatActivity() {
             } else false
         }
 
+        //로그인 시 아이디->로그인
+        val userId = intent.getStringExtra("user_id")
+        if (!userId.isNullOrBlank()) {
+            val menu = binding.navigationView.menu
+            val loginItem = menu.findItem(R.id.menu_login)
+            loginItem.title = userId //
+        }
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)) {
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun showTab(position: Int) {
@@ -104,6 +151,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
 
 
 
