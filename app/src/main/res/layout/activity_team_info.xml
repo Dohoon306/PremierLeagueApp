@@ -75,26 +75,33 @@
                 android:padding="16dp" />
         </com.google.android.material.card.MaterialCardView>
 
-        <ImageView
-            android:id="@+id/imgTeamLogo"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+        <!-- 팀 로고 + 즐겨찾기 버튼을 겹쳐서 표시 -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:contentDescription="팀 로고"
-            android:scaleType="centerInside" />
+            android:layout_marginTop="20dp">
 
-        <ImageButton
-            android:id="@+id/btnFavorite"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="end"
-            android:background="@android:color/transparent"
-            android:padding="5dp"
-            android:layout_marginTop="10dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/star_empty"
-            android:contentDescription="팔로우 버튼" />
+            <ImageView
+                android:id="@+id/imgTeamLogo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:contentDescription="팀 로고"
+                android:layout_gravity="center"
+                android:scaleType="centerInside" />
+
+            <ImageButton
+                android:id="@+id/btnFavorite"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="4dp"
+                android:background="@android:color/transparent"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/star_empty"
+                android:contentDescription="팔로우 버튼" />
+        </FrameLayout>
 
     </LinearLayout>
 </ScrollView>
