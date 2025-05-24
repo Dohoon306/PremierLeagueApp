@@ -13,6 +13,7 @@
         android:layout_height="wrap_content" />
 
     <EditText
+        android:id="@+id/edit_password"
         android:hint="비밀번호"
         android:inputType="textPassword"
         android:layout_width="match_parent"

@@ -9,6 +9,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -36,6 +37,23 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //로그인 사용자 표시
+        val prefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
+        val loginUser = prefs.getString("login_user", null)
+
+        val menu = binding.navigationView.menu
+        val userItem = menu.findItem(R.id.menu_user)
+        val logoutItem = menu.findItem(R.id.menu_logout) // 로그아웃 메뉴 항목
+
+        if (!loginUser.isNullOrBlank()) {
+            userItem.title = loginUser
+            logoutItem.isVisible = true  // 로그인 상태면 로그아웃 보임
+        } else {
+            userItem.title = "로그인"
+            logoutItem.isVisible = false // 로그인 전이면 로그아웃 숨김
+        }
+
+
         // 툴바 설정
         setSupportActionBar(binding.toolbarMain)
 
@@ -54,16 +72,37 @@ class MainActivity : AppCompatActivity() {
 
         binding.navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.menu_login -> {
-                    startActivity(Intent(this, LoginActivity::class.java))
-                }
-                R.id.menu_settings -> {
+                R.id.menu_user -> {
+                    val prefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
+                    val currentUser = prefs.getString("login_user", null)
 
+                    if (currentUser == null) {
+                        startActivity(Intent(this, LoginActivity::class.java))
+                    }
+                }
+
+                R.id.menu_logout -> {
+                    val prefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
+                    val currentUser = prefs.getString("login_user", null)
+
+                    if (currentUser != null) {
+                        prefs.edit().remove("login_user").apply()
+                        Toast.makeText(this, "로그아웃 되었습니다", Toast.LENGTH_SHORT).show()
+                        recreate()
+                    } else {
+                        Toast.makeText(this, "현재 로그인 상태가 아닙니다", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                R.id.menu_settings -> {
+                    // 설정 등 필요 시 추가
                 }
             }
             binding.drawerLayout.closeDrawers()
             true
         }
+
+
 
         supportActionBar?.title = "Premier League 24/25"
         // 순위표 View 생성 및 세팅
@@ -125,13 +164,6 @@ class MainActivity : AppCompatActivity() {
             } else false
         }
 
-        //로그인 시 아이디->로그인
-        val userId = intent.getStringExtra("user_id")
-        if (!userId.isNullOrBlank()) {
-            val menu = binding.navigationView.menu
-            val loginItem = menu.findItem(R.id.menu_login)
-            loginItem.title = userId //
-        }
 
     }
 
