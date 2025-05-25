@@ -17,7 +17,7 @@ class LoginActivity : AppCompatActivity() {
 
         supportActionBar?.title = "로그인"
 
-        val prefs = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        val prefs = getSharedPreferences("user_info", Context.MODE_PRIVATE)
 
         binding.btnLogin.setOnClickListener {
             val id = binding.editUserId.text.toString().trim()

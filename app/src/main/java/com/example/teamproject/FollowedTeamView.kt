@@ -24,7 +24,14 @@ class FollowedTeamView @JvmOverloads constructor(
 
     private fun setupFollowedTeamList() {
         val prefs = context.getSharedPreferences("followed_teams", Context.MODE_PRIVATE)
-        val followedTeams = getTeamList(context).filter { prefs.getBoolean("team_${it.id}", false) }
+
+        // 👀 현재 로그인한 사용자 ID 불러오기
+        val userId = context.getSharedPreferences("user_info", Context.MODE_PRIVATE)
+            .getString("login_user", "") ?: ""
+
+        // 👀 해당 사용자 기준으로 팔로우한 팀만 필터링
+        val followedTeams = getTeamList(context).filter {
+            prefs.getBoolean("user_${userId}_team_${it.id}", false)}
 
         binding.recyclerFollowList.layoutManager = LinearLayoutManager(context)
         binding.recyclerFollowList.adapter = TeamAdapter(followedTeams) { team ->

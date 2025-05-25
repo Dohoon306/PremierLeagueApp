@@ -59,17 +59,21 @@ class TeamInfoActivity : AppCompatActivity() {
             }
             container.addView(tv)
         }
-        //별 팔로잉 로직(별 클릭 처리 및 상태 저장)
-        val prefs = getSharedPreferences("followed_teams", MODE_PRIVATE)
-        val isFollowing = prefs.getBoolean("team_${team.id}", false)
+        val followPrefs = getSharedPreferences("followed_teams", MODE_PRIVATE)
+        val userPrefs = getSharedPreferences("user_info", MODE_PRIVATE)
+        val userId = userPrefs.getString("login_user", "") ?: ""
 
+// 초기 별 상태 반영
+        val isFollowing = followPrefs.getBoolean("user_${userId}_team_${team.id}", false)
         updateStarIcon(isFollowing)
 
+// 버튼 클릭 시 저장/해제
         binding.btnFavorite.setOnClickListener {
-            val newState = !prefs.getBoolean("team_${team.id}", false)
-            prefs.edit().putBoolean("team_${team.id}", newState).apply()
+            val newState = !followPrefs.getBoolean("user_${userId}_team_${team.id}", false)
+            followPrefs.edit().putBoolean("user_${userId}_team_${team.id}", newState).apply()
             updateStarIcon(newState)
         }
+
 
 
     }

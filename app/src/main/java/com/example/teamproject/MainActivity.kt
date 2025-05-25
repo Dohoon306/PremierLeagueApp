@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //로그인 사용자 표시
-        val prefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
+        val prefs = getSharedPreferences("user_info", MODE_PRIVATE)
         val loginUser = prefs.getString("login_user", null)
 
         val menu = binding.navigationView.menu
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         binding.navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_user -> {
-                    val prefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
+                    val prefs = getSharedPreferences("user_info", MODE_PRIVATE)
                     val currentUser = prefs.getString("login_user", null)
 
                     if (currentUser == null) {
@@ -82,13 +82,13 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.menu_logout -> {
-                    val prefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
+                    val prefs = getSharedPreferences("user_info", MODE_PRIVATE)
                     val currentUser = prefs.getString("login_user", null)
 
                     if (currentUser != null) {
                         prefs.edit().remove("login_user").apply()
                         Toast.makeText(this, "로그아웃 되었습니다", Toast.LENGTH_SHORT).show()
-                        recreate()
+                        recreate()  // MainActivity 재시작 → FollowedTeamView 초기화됨
                     } else {
                         Toast.makeText(this, "현재 로그인 상태가 아닙니다", Toast.LENGTH_SHORT).show()
                     }
